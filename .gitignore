@@ -1,3 +1,7 @@
+private/
+
+#########################
+
 # Created by https://www.toptal.com/developers/gitignore/api/c,c++,audio,video,images,python,visualstudiocode,visualstudio,linux,csharp,react,web,unity,unrealengine,windows,macos,chocolatey,homebrew,java,android,androidstudio,godot,reactnative,kotlin,swift,xcode,intellij,vim,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,c++,audio,video,images,python,visualstudiocode,visualstudio,linux,csharp,react,web,unity,unrealengine,windows,macos,chocolatey,homebrew,java,android,androidstudio,godot,reactnative,kotlin,swift,xcode,intellij,vim,eclipse
 
