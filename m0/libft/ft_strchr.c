@@ -6,16 +6,16 @@
 /*   By: namykim <namykim@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 13:54:03 by namykim           #+#    #+#             */
-/*   Updated: 2026/01/02 13:54:04 by namykim          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:53:07 by namykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int i;
-	char cc;
+	unsigned int	i;
+	char			cc;
 
 	cc = (char)c;
 	i = 0;

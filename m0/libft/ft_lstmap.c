@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: namykim <namykim@student.42gyeongsan.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/20 18:52:59 by namykim           #+#    #+#             */
+/*   Updated: 2026/01/20 18:52:59 by namykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -13,7 +25,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		con = (*f)(lst->content);
 		obj = ft_lstnew(con);
-		if(!obj)
+		if (!obj)
 		{
 			(*del)(con);
 			ft_lstclear(&res, (*del));

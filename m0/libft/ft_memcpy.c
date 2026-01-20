@@ -6,7 +6,7 @@
 /*   By: namykim <namykim@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 18:33:15 by namykim           #+#    #+#             */
-/*   Updated: 2025/12/25 18:33:16 by namykim          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:53:02 by namykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*s1;
 	unsigned char	*s2;
-	
-	if(src == NULL && dst == NULL)
+
+	if (src == NULL && dst == NULL)
 		return (dst);
 	s1 = (unsigned char *) dst;
 	s2 = (unsigned char *) src;

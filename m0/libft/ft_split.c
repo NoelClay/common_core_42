@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: namykim <namykim@student.42gyeongsan.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/20 18:53:06 by namykim           #+#    #+#             */
+/*   Updated: 2026/01/20 18:53:06 by namykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 //v2
 // 프리
 static void	*ft_charpp_free(char **chrpp, int last_idx)
 {
-	while(last_idx >= 0)
+	while (last_idx >= 0)
 		free(chrpp[last_idx--]);
 	free(chrpp);
 	return (NULL);
@@ -24,12 +36,19 @@ static int	ft_count_word(const char *str, char chr)
 			i++;
 		if (str[i])
 		{
-			res+=1;
+			res += 1;
 			while (str[i] && str[i] != chr)
 				i++;
 		}
 	}
 	return (res);
+}
+
+static void	ft_init(int *i, int *j, int *k)
+{
+	*i = 0;
+	*j = 0;
+	*k = -1;
 }
 
 // 스플릿
@@ -40,36 +59,29 @@ char	**ft_split(const char *s, char c)
 	int		ri;
 	int		wi;
 
-	if (!s)
-		return (NULL);
 	res = (char **)ft_calloc(ft_count_word(s, c) + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
-	i = 0;
-	ri = 0;
-	wi = -1;
+	ft_init(&i, &ri, &wi);
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		if (s[i])
-		{
-			wi = i;
-			while (s[i] && s[i] != c)
-				i++;
-			res[ri] = ft_substr(s, wi, i - wi);
-			if (!res[ri])
-				return (ft_charpp_free(res, ri - 1));
-			ri++;
-		}
+		if (!s[i])
+			break ;
+		wi = i;
+		while (s[i] && s[i] != c)
+			i++;
+		res[ri] = ft_substr(s, wi, i - wi);
+		if (!res[ri])
+			return (ft_charpp_free(res, ri - 1));
+		ri++;
 	}
 	res[ri] = NULL;
 	return (res);
 }
 
 // 단어 추출 ft_substr
-
-
 /*//v1
 static int	ft_count_word(const char *s, char c)
 {
