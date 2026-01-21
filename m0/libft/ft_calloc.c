@@ -17,6 +17,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	unsigned char	*mt;
 	size_t			capa;
 
+	if (size != 0 && nmemb > ((size_t)-1) / size)
+		return (NULL);
 	capa = nmemb * size;
 	mt = malloc(capa);
 	if (!mt)
