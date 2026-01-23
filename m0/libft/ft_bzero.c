@@ -17,6 +17,11 @@ void	ft_bzero(void *s, size_t n)
 	ft_memset(s, 0, n);
 }
 
+//void	ft_bzero(void *s, size_t n)
+//{
+//	ft_memset(s, 0, n);
+//}
+
 //int main() {
 //    int arr[5] = {10, 20, 30, 40, 50};
 //    printf("Before: ");

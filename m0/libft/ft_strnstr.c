@@ -15,6 +15,33 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
+	size_t	biglen;
+	size_t	litlen;
+
+	biglen = ft_strlen(big);
+	litlen = ft_strlen(little);
+	if (litlen == 0)
+		return ((char *)big);
+	if (biglen < litlen)
+		return (NULL);
+	i = 0;
+	while (i < biglen && i < len)
+	{
+		if (big[i] == little[0] && biglen >= litlen + i && len >= litlen + i)
+		{
+			if (ft_strncmp(big + i, little, litlen) == 0)
+				return ((char *)big + i);
+		}
+		i++;
+	}
+	if (big[i] == 0 && little[0] == 0)
+		return ((char *)big + i);
+	return (NULL);
+}
+
+/*char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
 	size_t	j;
 
 	i = 0;
@@ -32,7 +59,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		i++;
 	}
 	return (0);
-}
+}*/
 
 /*//v2
 char *ft_strnstr(const char *big, const char *little, size_t len)

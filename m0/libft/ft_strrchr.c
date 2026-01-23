@@ -14,6 +14,41 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	char	*chase;
+	char	operand;
+
+	operand = (char)c;
+	chase = (char *)(s + ft_strlen(s));
+	while (chase >= s)
+	{
+		if (*chase == operand)
+			return (chase);
+		if (chase == s)
+			break ;
+		chase--;
+	}
+	return (NULL);
+}
+
+/*char	*ft_strrchr(const char *s, int c)
+{
+	char	*record;
+	char	*res;
+
+	record = ft_strchr(s, c);
+	res = NULL;
+	while (record != NULL)
+	{
+		res = record;
+		if (*record == '\0')
+			break;
+		record = ft_strchr((const char *)(record + 1), c);
+	}
+	return (res);
+}*/
+
+/*char	*ft_strrchr(const char *s, int c)
+{
 	int	i;
 
 	i = ft_strlen(s);
@@ -25,3 +60,4 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
+*/

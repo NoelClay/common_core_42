@@ -1,112 +1,181 @@
 _This project has been created as part of the 42 curriculum by namykim._
 
-# Libft
+# Subject : Libft
 
 ---
 
-## Description
+# Description
 
-Libft is a custom implementation of essential C standard library functions, packaged as a static library. This project serves as the foundation of the 42 curriculum, designed to develop a deep understanding of low-level memory manipulation, string processing, and dynamic data structure implementation in C.
+What's interesting is libft is a static library implementing essential c standard library functions. 
+This project establishes foundational knowledge in low-level memory manipulation, string processing, and dynamic data structures.
 
-The project consists of 43 functions organized into three distinct parts. Part 1 recreates 23 standard libc functions, establishing fundamentals in character classification, string manipulation, and memory management. Part 2 develops 11 utility functions not found in the standard library, advancing skills in string parsing and dynamic memory allocation. Part 3 implements 9 functions for managing singly linked lists, introducing the basics of dynamic data structures.
+**Project Scope:**
+- 43 functions across three parts
+- Part 1: 23 libc function reimplementations
+- Part 2: 11 additional utility functions
+- Part 3: 9 linked list management functions
 
-All functions are designed to operate safely without memory leaks and have been tested under strict compiler warning levels. The completed library serves as a reusable code base for subsequent 42 projects.
+**Key Features:**
+- Zero memory leaks (validated with valgrind)
+- Strict compiler warning compliance (`-Wall -Wextra -Werror`)
+- POSIX standard adherence
+- 42 Norm compliant
 
-### Part 1: Standard Library Function Reimplementation (23 functions)
+## Part 1: Standard Library Reimplementation (23 functions)
 
-This section reimplements core functions from the C standard library (libc). Each function faithfully follows the behavior and prototype of the original, distinguished by the `ft_` prefix.
+All functions replicate standard libc behavior with `ft_`prefix.
 
-The five character classification functions determine whether a given character belongs to a specific category. The functions `ft_isalpha`, `ft_isdigit`, `ft_isalnum`, `ft_isascii`, and `ft_isprint` are implemented using direct ASCII value comparisons, checking for alphabetic characters, digits, alphanumeric characters, ASCII characters, and printable characters respectively. They return 1 if the condition is met, 0 otherwise.
+### Character Classification (5 functions)
 
-The eight string processing functions handle basic string operations. The function `ft_strlen` calculates the length of a null-terminated string. Functions `ft_strlcpy` and `ft_strlcat` are safe string copy and concatenation functions that prevent buffer overflows, originating from BSD systems. Functions `ft_strchr` and `ft_strrchr` locate the first or last occurrence of a character in a string respectively. The function `ft_strncmp` compares two strings up to a specified number of bytes, and `ft_strnstr` searches for a substring within a larger string.
+- `ft_isalpha`: Checks if character is alphabetic (a-z, A-Z)
+- `ft_isdigit`: Checks if character is numeric (0-9)
+- `ft_isalnum`: Checks if character is alphanumeric
+- `ft_isascii`: Checks if character is valid ASCII (0-127)
+- `ft_isprint`: Checks if character is printable (32-126)
 
-The six memory manipulation functions provide byte-level memory control. The function `ft_memset` fills a memory block with a specific byte value, while `ft_bzero` initializes memory to zero. Function `ft_memcpy` copies non-overlapping memory regions, and `ft_memmove` safely handles overlapping memory areas. The memmove implementation prevents data corruption by comparing source and destination addresses to determine the appropriate copy direction. Function `ft_memchr` finds a specific byte in a memory block, and `ft_memcmp` compares two memory regions byte by byte.
+Returns 1 on match, 0 otherwise.
 
-The three conversion functions handle character and number transformations. Functions `ft_toupper` and `ft_tolower` convert character case, while `ft_atoi` converts strings to integers, handling whitespace and sign recognition.
+### String Processing (8 functions)
 
-The two dynamic memory allocation functions support safe memory management. Function `ft_calloc` allocates memory for a specified number of elements of a given size and initializes it to zero. Function `ft_strdup` dynamically allocates and returns a copy of a given string. Both functions return NULL on allocation failure, enabling safe error handling.
+- `ft_strlen`: Returns string length
+- `ft_strlcpy`: Safely copies string with size limit (BSD)
+- `ft_strlcat`: Safely concatenates string with size limit (BSD)
+- `ft_strchr`: Locates first occurrence of character
+- `ft_strrchr`: Locates last occurrence of character
+- `ft_strncmp`: Compares strings up to n bytes
+- `ft_strnstr`: Locates substring within string (up to len bytes)
 
-### Part 2: Additional Utility Functions (11 functions)
+### Memory Manipulation (6 functions)
 
-This part implements practical functions not found in the standard library.
+- `ft_memset`: Fills memory block with specified byte
+- `ft_bzero`: Initializes memory block to zero
+- `ft_memcpy`: Copies non-overlapping memory regions
+- `ft_memmove`: Copies memory regions (handles overlap via direction detection)
+- `ft_memchr`: Locates byte in memory block
+- `ft_memcmp`: Compares memory blocks byte-by-byte
 
-The four string creation and manipulation functions handle dynamic string processing. Function `ft_substr` dynamically allocates and creates a substring from the original string at a specified position and length. Function `ft_strjoin` creates a new string by concatenating two strings. Function `ft_strtrim` removes all characters belonging to a specified set from both ends of a string. Function `ft_split` divides a string based on a delimiter, returning a NULL-terminated array of strings useful for CSV parsing and tokenization tasks.
+### Conversion (3 functions)
 
-The type conversion function `ft_itoa` converts an integer to a string, handling negative numbers and edge cases like INT_MIN correctly.
+- `ft_toupper`: Converts lowercase to uppercase
+- `ft_tolower`: Converts uppercase to lowercase
+- `ft_atoi`: Converts string to integer (handles whitespace and signs)
 
-The two function mapping functions implement the concept of higher-order functions using function pointers. Function `ft_strmapi` applies a function to each character of a string along with its index, creating a new string. Function `ft_striteri` is similar but modifies the original string in place and returns nothing.
+### Dynamic Allocation (2 functions)
 
-The four file descriptor output functions provide flexible output capabilities. Functions `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, and `ft_putnbr_fd` output a character, string, string with newline, and integer to a specified file descriptor respectively. By accepting a file descriptor as a parameter, these functions offer flexibility to output to standard output, files, or standard error.
+- `ft_calloc`: Allocates zero-initialized memory
+- `ft_strdup`: Duplicates string with dynamic allocation
 
-### Part 3: Linked List Implementation (9 functions)
+Both return NULL on allocation failure.
 
-This part implements a comprehensive function set for singly linked lists. Each node is represented by the t_list structure, containing a void pointer content member and a next pointer to the following node. Using void pointers enables a generic list capable of storing any data type.
+## Part 2: Additional Utilities (11 functions)
 
-The three node creation and insertion functions form the basic list structure. Function `ft_lstnew` creates a new node with given content and initializes next to NULL. Function `ft_lstadd_front` adds a node to the front of the list with O(1) time complexity. Function `ft_lstadd_back` adds a node to the end of the list, requiring list traversal and thus having O(n) time complexity.
+Extended functionality not provided by standard library.
 
-The two list information retrieval functions assess list state. Function `ft_lstsize` counts and returns the total number of nodes in the list. Function `ft_lstlast` finds and returns the last node of the list, returning NULL for an empty list.
+### String Creation (4 functions)
 
-The two memory management functions handle safe list deallocation. Function `ft_lstdelone` frees a single node's content using the provided deletion function, then frees the node itself. Function `ft_lstclear` deletes all nodes in the list and sets the list pointer to NULL, preventing memory leaks.
+- `ft_substr`: Extracts substring at specified position and length
+- `ft_strjoin`: Concatenates two strings into new allocation
+- `ft_strtrim`: Removes specified characters from both ends
+- `ft_split`: Tokenizes string by delimiter into NULL-terminated array
 
-The two list traversal and transformation functions perform operations on the entire list. Function `ft_lstiter` applies a given function to each node in the list. Function `ft_lstmap` creates a new list by applying a function to each node's content, cleaning up all created nodes on allocation failure to prevent memory leaks.
+### Type Conversion (1 function)
 
-### Technical Implementation Features
+- `ft_itoa`: Converts integer to string (handles INT_MIN)
 
-All functions in this project are designed to operate without memory leaks. All memory allocated with malloc must be properly freed after use, and allocation failures return NULL to allow callers to handle errors. Memory checks using valgrind show "no leaks are possible" results for all functions.
+### Function Mapping (2 functions)
 
-Functions perform defined behaviors for invalid input. When passed NULL pointers, most functions return NULL or perform no operation. Boundary conditions such as empty strings and zero-size allocations are handled correctly.
+- `ft_strmapi`: Applies function to each character with index (creates new string)
+- `ft_striteri`: Applies function to each character with index (modifies in place)
 
-The code follows POSIX standards and avoids platform-dependent features. Standard types like size_t are used instead of fixed-size types from stdint.h, ensuring operation across various systems. All code adheres to 42's Norm rules, with functions not exceeding 25 lines and each function following the single responsibility principle. Complex logic is separated into static helper functions to improve readability.
+### File Descriptor Output (4 functions)
 
----
+- `ft_putchar_fd`: Writes character to file descriptor
+- `ft_putstr_fd`: Writes string to file descriptor
+- `ft_putendl_fd`: Writes string with newline to file descriptor
+- `ft_putnbr_fd`: Writes integer to file descriptor
 
-## Instructions
+## Part 3: Linked List Operations (9 functions)
 
-### Build Requirements
+Singly linked list implementation using generic `t_list` structure.
 
-Building this project requires the following environment. A C compiler such as gcc or clang is needed, and the Make utility must be installed. The project operates normally on POSIX-compliant operating systems such as Linux or macOS.
+**Structure Definition:**
+```c
+typedef struct s_list
+{
+    void            *content;
+    struct s_list   *next;
+}   t_list;
+```
 
-### Compilation
+### Node Creation and Insertion (3 functions)
 
-After cloning the repository, execute the following command in the root directory to generate the `libft.a` static library.
+- `ft_lstnew`: Creates new node with given content
+- `ft_lstadd_front`: Prepends node to list (O(1))
+- `ft_lstadd_back`: Appends node to list (O(n))
 
-```bash
+### List Information (2 functions)
+
+- `ft_lstsize`: Returns node count
+- `ft_lstlast`: Returns last node (NULL if empty)
+
+### Memory Management (2 functions)
+
+- `ft_lstdelone`: Deletes single node with custom deleter function
+- `ft_lstclear`: Deletes entire list and sets pointer to NULL
+
+List Operations (2 functions)
+ft_lstiter: Applies function to each node
+ft_lstmap: Creates new list by applying function to each node's content (handles allocation failure)
+Technical Specifications
+Memory Management:
+
+All allocations properly freed
+NULL return on allocation failure
+Valgrind verified: "no leaks are possible"
+Error Handling:
+
+NULL pointer inputs handled safely
+Boundary conditions (empty strings, zero allocations) validated
+Defined behavior for invalid inputs
+Portability:
+
+POSIX compliant
+Platform-independent implementation
+Standard types (size_t) over fixed-size types
+Code Standards:
+
+42 Norm compliant
+Maximum 25 lines per function
+Single responsibility principle
+Static helper functions for complex logic
+Instructions
+Requirements
+C compiler (gcc or clang)
+Make utility
+POSIX-compliant OS (Linux, macOS)
+Build
+Clone and compile:
+
 git clone <repository_url> libft
 cd libft
 make
-```
+Compilation flags: -Wall -Wextra -Werror
 
-Compilation uses the `-Wall -Wextra -Werror` flags, treating all warnings as errors. This ensures code stability and portability.
+Makefile Targets
+Target	Action
+make or make all	Compile library
+make clean	Remove object files
+make fclean	Remove all generated files
+make re	Recompile from scratch
+Integration
+Step 1: Compile library
 
-### Makefile Targets
-
-The Makefile provides the following targets.
-
-Running `make` or `make all` compiles all source files to generate the libft.a library.
-
-Running `make clean` removes object files (.o) generated during compilation.
-
-Running `make fclean` removes both object files and the library file, returning to a clean state.
-
-Running `make re` performs fclean followed by all, recompiling everything from scratch.
-
-### Using in Your Project
-
-To integrate libft into your C project, follow these steps. First, compile the library in the libft directory.
-
-```bash
 cd libft && make
-```
+Step 2: Link with your project
 
-Then link libft.a when compiling your source files.
-
-```bash
 cc -Wall -Wextra -Werror your_file.c -L./libft -lft -o your_program
-```
+Step 3: Include header in source
 
-In your source code, include the libft.h header file.
-
-```c
 #include "libft.h"
 
 int main(void)
@@ -116,28 +185,44 @@ int main(void)
     free(str);
     return 0;
 }
-```
+Resources
+Reference Documentation
+FreeBSD Man Pages
 
-This allows you to use all libft functions in your project. After using the library, you must free any dynamically allocated memory.
+Function specifications and behavior verification
+BSD-specific functions (strlcpy, strlcat)
+Dojang C Course
 
----
+C syntax fundamentals
+Pointer concepts
+CS50
 
-## Resources
+Memory structure and management
+Dynamic allocation principles
+42 Cursus GitBook
 
-### Reference Documentation
+Clarifications on ambiguous specifications
+Implementation hints (no code copied)
+AI Usage
+Scope: Learning assistance only, no direct code generation.
 
-The following official documentation and learning materials were consulted to complete this project.
+Concept Understanding:
 
-FreeBSD Man Pages were used to verify exact specifications and expected behavior of each function. For BSD-specific functions like strlcpy and strlcat, BSD manuals were specifically referenced to implement correct behavior. The documentation can be accessed at[FreeBSD Man Pages](https://man.freebsd.org/cgi/man.cgi).
+Theoretical explanations of complex topics (memory overlap, endianness)
+Function intent clarification when specifications were ambiguous
+Example: "Why does memmove need bidirectional copying?"
+Debugging Support:
 
-The Dojang C programming course was used to learn basic syntax and pointer concepts. This resource is available at [The Dojang C programming course](https://dojang.io/course/view.php?id=2) and was very helpful in building C programming fundamentals.
+Boundary condition identification
+Common error pattern analysis
+Counterexample generation for edge cases
+Not Used For:
 
-CS50 lectures provided a deep understanding of memory structure, pointers, and the principles of dynamic allocation. This course can be accessed at [CS50 lectures](www.boostcourse.org/cs112) and was extremely useful for learning fundamental computer science concepts.
+Direct code implementation
+Algorithm solutions
+Function logic design
+Actual Development:
 
-### AI Usage
-
-This project was developed in strict adherence to 42's AI usage guidelines. AI tools were used only for learning assistance purposes, not for direct code generation.
-
-AI was utilized during the concept understanding phase.For unfamiliar concepts such as memory nesting, or in cases where the intent was not clearly understood from the specification alone, I used it to gain a better understanding of the function’s purpose.
-
-AI was also used in a limited capacity during debugging. By checking common boundary conditions and asking for counterexamples, I was able to improve the completeness of the code.
+Code written through manual page analysis and iterative testing
+Bugs fixed using gdb and valgrind
+You know what? solutions validated through peer review and code discussions

@@ -14,6 +14,30 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	unsigned char	*ucdst;
+	unsigned char	*ucsrc;
+
+	if (dst == src)
+		return (dst);
+	ucdst = (unsigned char *)dst;
+	ucsrc = (unsigned char *)src;
+	if (dst > src)
+	{
+		while (len > 0)
+		{
+			len--;
+			ucdst[len] = ucsrc[len];
+		}
+	}
+	else
+	{
+		return (ft_memcpy(dst, src, len));
+	}
+	return (dst);
+}
+
+/*void	*ft_memmove(void *dst, const void *src, size_t len)
+{
 	unsigned char	*c_src;
 	unsigned char	*c_dst;
 	size_t			i;
@@ -38,3 +62,4 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
+*/

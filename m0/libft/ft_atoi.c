@@ -12,7 +12,55 @@
 
 #include "libft.h"
 
-static int	ft_is_space(const char c)
+static int	ft_isspace(int c)
+{
+	unsigned char	cc;
+
+	cc = (unsigned char)c;
+	if (cc == '\t' || cc == '\n' || cc == '\v' || cc == '\f' || cc == '\r')
+		return (1);
+	if (cc == ' ')
+		return (1);
+	return (0);
+}
+
+static int	ft_signtoi(int c)
+{
+	unsigned char	cc;
+
+	cc = (unsigned char)c;
+	if (cc == '+')
+		return (1);
+	if (cc == '-')
+		return (-1);
+	return (0);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	res;
+	int	sign;
+
+	res = 0;
+	while (ft_isspace(*str) && *str)
+		str++;
+	sign = ft_signtoi(*str);
+	if (!ft_isdigit(*str) && sign != 0)
+		str++;
+	while (ft_isdigit(*str) && *str)
+	{
+		res *= 10;
+		res += ((*str) - 48);
+		str++;
+	}
+	if (res == 0)
+		return (0);
+	if (sign == -1)
+		res *= -1;
+	return (res);
+}
+
+/*static int	ft_is_space(const char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
@@ -52,3 +100,4 @@ int	ft_atoi(const char *nptr)
 	res *= sign;
 	return ((int)res);
 }
+*/

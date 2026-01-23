@@ -14,6 +14,21 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	bsize;
+	void	*res;
+
+	if (size != 0 && nmemb > (size_t)-1 / size)
+		return (NULL);
+	bsize = nmemb * size;
+	res = malloc(bsize);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, bsize);
+	return (res);
+}
+
+/*void	*ft_calloc(size_t nmemb, size_t size)
+{
 	unsigned char	*mt;
 	size_t			capa;
 
@@ -26,3 +41,4 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(mt, capa);
 	return ((void *)mt);
 }
+*/

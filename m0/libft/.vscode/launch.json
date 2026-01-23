@@ -1,0 +1,39 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "C/C++: libft debug (must modify args)",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${fileDirname}/${fileBasenameNoExtension}",
+			"args": [
+				"${input:getArgs}"
+			],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "gdb에 대해 자동 서식 지정 사용",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "libft_build",
+			"miDebuggerPath": "/usr/bin/gdb"
+		}
+	],
+	"inputs": [
+		{
+			"id": "getArgs",
+			"type": "promptString",
+			"description": "실행 인자를 입력하세요 (예: strlen, split)",
+			"default": "strlen"
+		}
+	]
+}

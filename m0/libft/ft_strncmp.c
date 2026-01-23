@@ -14,6 +14,27 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
+	int				res;
+	unsigned char	*ucs1;
+	unsigned char	*ucs2;
+
+	ucs1 = (unsigned char *)s1;
+	ucs2 = (unsigned char *)s2;
+	res = 0;
+	while (*ucs1 && *ucs2 && n > 0)
+	{
+		res = *(ucs1++) - *(ucs2++);
+		if (res != 0)
+			return (res);
+		n--;
+	}
+	if (n > 0)
+		return (*(ucs1++) - *(ucs2++));
+	return (res);
+}
+
+/*int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
 	size_t	i;
 
 	i = 0;
@@ -24,7 +45,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (0);
-}
+}*/
 
 /*
 //v1

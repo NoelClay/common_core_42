@@ -14,6 +14,19 @@
 
 char	*ft_strdup(const char *s)
 {
+	size_t	slen;
+	char	*res;
+
+	slen = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (slen + 1));
+	if (!res)
+		return (NULL);
+	ft_strlcpy(res, s, slen + 1);
+	return (res);
+}
+
+/*char	*ft_strdup(const char *s)
+{
 	size_t	len;
 	size_t	i;
 	char	*res;
@@ -31,3 +44,4 @@ char	*ft_strdup(const char *s)
 	res[i] = 0;
 	return (res);
 }
+*/

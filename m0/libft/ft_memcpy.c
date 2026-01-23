@@ -15,21 +15,40 @@
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			i;
-	unsigned char	*s1;
-	unsigned char	*s2;
+	unsigned char	*ucdst;
+	unsigned char	*ucsrc;
 
-	if (src == NULL && dst == NULL)
-		return (dst);
-	s1 = (unsigned char *) dst;
-	s2 = (unsigned char *) src;
+	if (!dst && !src)
+		return (NULL);
+	ucdst = (unsigned char *)dst;
+	ucsrc = (unsigned char *)src;
 	i = 0;
 	while (i < n)
 	{
-		*(s1 + i) = *(s2 + i);
+		ucdst[i] = ucsrc[i];
 		i++;
 	}
 	return (dst);
 }
+
+//void	*ft_memcpy(void *dst, const void *src, size_t n)
+//{
+//	size_t			i;
+//	unsigned char	*s1;
+//	unsigned char	*s2;
+
+//	if (src == NULL && dst == NULL)
+//		return (dst);
+//	s1 = (unsigned char *) dst;
+//	s2 = (unsigned char *) src;
+//	i = 0;
+//	while (i < n)
+//	{
+//		*(s1 + i) = *(s2 + i);
+//		i++;
+//	}
+//	return (dst);
+//}
 
 /*
 #include <string.h>

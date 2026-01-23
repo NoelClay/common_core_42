@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   test_ft_lstdelone.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namykim <namykim@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/25 15:23:17 by namykim           #+#    #+#             */
-/*   Updated: 2026/01/20 18:53:10 by namykim          ###   ########.fr       */
+/*   Created: 2026/01/22 09:19:25 by namykim           #+#    #+#             */
+/*   Updated: 2026/01/22 09:19:27 by namykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+void	del(void *ptr)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != 0)
-		i++;
-	return (i);
+	free(ptr);
 }
 
-//int	main(void)
-//{
-//	char a;
+int	main(void)
+{
+	t_list	*testlst;
+	char	*teststr;
 
-//	a = strlen("1234567890123456789012345678901234");
-
-//	write(1, &a, 1);
-//}
+	teststr = ft_strdup("12345");
+	if (!teststr)
+		return (1);
+	testlst = ft_lstnew(teststr);
+	if (!testlst)
+		return (1);
+	ft_lstdelone(testlst, del);
+	return (0);
+}

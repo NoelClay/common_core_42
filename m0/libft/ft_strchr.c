@@ -14,6 +14,22 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	char	e;
+
+	e = (char)c;
+	while (*s)
+	{
+		if (*s == e)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == 0 && e == 0)
+		return ((char *)s);
+	return (NULL);
+}
+
+/*char	*ft_strchr(const char *s, int c)
+{
 	unsigned int	i;
 	char			cc;
 
@@ -28,7 +44,7 @@ char	*ft_strchr(const char *s, int c)
 	if (s[i] == cc)
 		return ((char *)&s[i]);
 	return (NULL);
-}
+}*/
 /*
 //v1
 char	*ft_strchr(const char *s, int c)

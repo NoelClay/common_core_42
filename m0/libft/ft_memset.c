@@ -14,16 +14,33 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*s;
+	unsigned char	*ucb;
+	size_t			i;
+	unsigned char	ucc;
 
-	s = (unsigned char *) b;
-	while (len > 0)
+	i = 0;
+	ucb = (unsigned char *)b;
+	ucc = (unsigned char)c;
+	while (i < len)
 	{
-		*(s++) = (unsigned char) c;
-		len--;
+		ucb[i] = ucc;
+		i++;
 	}
-	return (b);
+	return ((void *)ucb);
 }
+
+//void	*ft_memset(void *b, int c, size_t len)
+//{
+//	unsigned char	*s;
+
+//	s = (unsigned char *) b;
+//	while (len > 0)
+//	{
+//		*(s++) = (unsigned char) c;
+//		len--;
+//	}
+//	return (b);
+//}
 
 //int main() {
 //    int arr[5] = {10, 20, 30, 40, 50};
